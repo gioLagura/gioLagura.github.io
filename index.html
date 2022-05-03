@@ -90,7 +90,11 @@ The guards notice you lurking around and take you for an intruder and start chas
 
 &#39;&#39;GAME OVER&#39;&#39;
 
-[[Restart-&gt;Start]]</tw-passagedata><tw-passagedata pid="13" name="Don&#39;t Go Inside" tags="" position="1000,875" size="100,100">(if:$haveEducation is true)[[[Next day-&gt;If have education]]]
+[[Restart-&gt;Start]]</tw-passagedata><tw-passagedata pid="13" name="Don&#39;t Go Inside" tags="" position="1000,875" size="100,100">You decide to head straight home. As you leave the village, you look back and see guards beating your neighbor&#39;s son as he was trying to steal calfskins to provide for his own family. 
+
+Perhaps this was a good choice.
+
+(if:$haveEducation is true)[[[Next day-&gt;If have education]]]
 (else:)[[[Next day-&gt;If bought seeds]]]</tw-passagedata><tw-passagedata pid="14" name="Give to Old Gran" tags="" position="1100,1175" size="100,100">[[Next Day-&gt;Die due to Crops dying]]</tw-passagedata><tw-passagedata pid="15" name="Give to Biswas" tags="" position="1250,1175" size="100,100">[[Next Day-&gt;Die due to Crops dying]]</tw-passagedata><tw-passagedata pid="16" name="Become Prostitute" tags="" position="750,1175" size="100,100">[[Next day-&gt;Die due to STDS]]</tw-passagedata><tw-passagedata pid="17" name="Stay with Tannery" tags="" position="900,1175" size="100,100">(if:$offerTaken is true)[Your Text Here]
 (else:)[[[Declined Offer and win-&gt;Declined Offer and win]]]</tw-passagedata><tw-passagedata pid="18" name="Die due to Crops dying" tags="" position="1650,1000" size="100,100">[[Restart-&gt;Start]]</tw-passagedata><tw-passagedata pid="19" name="If taken the Offer" tags="" position="1000,1300" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="20" name="Declined Offer and win" tags="" position="1775,1700" size="100,100">[[Restart-&gt;Start]]
 </tw-passagedata><tw-passagedata pid="21" name="Die due to STDS" tags="" position="350,1000" size="100,100">[[Restart-&gt;Start]]</tw-passagedata><tw-passagedata pid="22" name="If not enough money" tags="" position="925,1425" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="23" name="Enough money and win" tags="" position="1075,1425" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="24" name="If have education" tags="" position="925,1000" size="100,100">[[Stay with Tannery-&gt;Stay with Tannery]]
