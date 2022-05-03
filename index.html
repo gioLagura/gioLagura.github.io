@@ -74,7 +74,7 @@ Will you take his offer?
 [[Decline Offer-&gt;Decline Offer]]</tw-passagedata><tw-passagedata pid="9" name="Take Offer" tags="" position="875,625" size="100,100">&quot;I&#39;m glad you took my offer. I&#39;ll be expecting the money by the end of the week&quot;
 (set: $rupees to $rupees+5)
 You gain 5 rupees from Biswas and he leaves, you now have $rupees rupees.
-
+(set: $offerTaken to true)
 [[Next Day-&gt;Tannery Left Open]]</tw-passagedata><tw-passagedata pid="10" name="Decline Offer" tags="" position="1125,628.3333333333334" size="100,100">&quot;That&#39;s a shame. Well, I hope you and your family thrive during this famine.&quot;
 
 Biswas leaves your house and you&#39;re left with a sour taste in your mouth.
@@ -98,35 +98,69 @@ The guards notice you lurking around and take you for an intruder and start chas
 
 [[Restart-&gt;Start]]</tw-passagedata><tw-passagedata pid="13" name="Don&#39;t Go Inside" tags="" position="1000,875" size="100,100">You decide to head straight home. As you leave the village, you look back and see guards beating your neighbor&#39;s son as he was trying to steal calfskins to provide for his own family. 
 
-Perhaps this was a good choice.
+(if:$offerTaken is true)[You notice a something move behind you and you turn to look around. As you look around, somebody approaches you and steals 5 of your rupees.
+(set: $rupees to $rupees-5)
+You now have $rupees rupees.]
+(else:)[Perhaps this was a good choice.]
 
 {(if:$haveEducation is false)[[[Next day-&gt;If bought seeds]]]
 (else-if:$haveJob is true)[[[Next day-&gt;If have education]]]
-(else:)[[[Next day-&gt;If have education, no job]]]}</tw-passagedata><tw-passagedata pid="14" name="Give to Old Gran" tags="" position="1100,1175" size="100,100">[[Next Day-&gt;Die due to Crops dying]]</tw-passagedata><tw-passagedata pid="15" name="Give to Biswas" tags="" position="1250,1175" size="100,100">[[Next Day-&gt;Die due to Crops dying]]</tw-passagedata><tw-passagedata pid="16" name="Become Prostitute" tags="" position="750,1175" size="100,100">You accept the job offer and combined with your current earnings at the tannery, you now earn 6 rupees a day! 
+(else:)[[[Next day-&gt;If have education, no job]]]}</tw-passagedata><tw-passagedata pid="14" name="Give to Old Gran" tags="" position="1100,1175" size="100,100">You go to Old Gran and give her your left over rice and she thanks you immensly for them.
+
+You feel good about yourself and go back to your house planting more rice for the next couple of days. Your biggest batch of rice is about to grow tomorrow and you&#39;ll have enough rice for weeks to come!
+
+[[Next Day-&gt;Die due to Crops dying]]</tw-passagedata><tw-passagedata pid="15" name="Give to Biswas" tags="" position="1250,1175" size="100,100">You go to Biswas and give her your left over rice. He asks if this is a part of a business deal and if there&#39;s any hidden fees behind the rice. You assure him that they&#39;re free and he hesitantly thanks you.
+
+You feel good about yourself and go back to your house planting more rice for the next couple of days. Your biggest batch of rice is about to grow tomorrow and you&#39;ll have enough rice for weeks to come!
+
+[[Next Day-&gt;Die due to Crops dying]]</tw-passagedata><tw-passagedata pid="16" name="Become Prostitute" tags="" position="750,1175" size="100,100">You accept the job offer and combined with your current earnings at the tannery, you now earn 6 rupees a day! 
 
 You feel uneasy with your new job but you know this is for a good cause. The money from this along with the tannery will help go towards feeding the family.
 
-[[Next day-&gt;Die due to STDS]]</tw-passagedata><tw-passagedata pid="17" name="Stay with Tannery" tags="" position="900,1175" size="100,100">(if:$offerTaken is true)[Your Text Here]
-(else:)[[[Declined Offer and win-&gt;Declined Offer and win]]]</tw-passagedata><tw-passagedata pid="18" name="Die due to Crops dying" tags="" position="1650,1000" size="100,100">[[Restart-&gt;Start]]</tw-passagedata><tw-passagedata pid="19" name="If taken the Offer" tags="" position="1000,1300" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="20" name="Declined Offer and win" tags="" position="1775,1700" size="100,100">[[Restart-&gt;Start]]
-</tw-passagedata><tw-passagedata pid="21" name="Die due to STDS" tags="" position="350,1000" size="100,100">You wake up the next day after your new job and notice you have rashes near your genitalia. You visit the village doctor Kenny has discovers you have STDs. You feel your body get weaker and weaker no matter what medeications you take. 
+[[Next day-&gt;Die due to STDS]]</tw-passagedata><tw-passagedata pid="17" name="Stay with Tannery" tags="" position="900,1175" size="100,100">You decide to stick with your current job as a second job could be too much for you to handle. Besides, becoming a prostitute doesn&#39;t seem to be the most appealing second job to you anyways.
+
+(if:$offerTaken is true)[[[Next day-&gt;If taken the Offer]]]
+(else:)[[[Next day-&gt;Declined Offer and win]]]</tw-passagedata><tw-passagedata pid="18" name="Die due to Crops dying" tags="" position="1650,1000" size="100,100">A heavy storm hits the village and destroys most of the village. Only the tannery is left relatively unaffected. Because of the storm, your rice paddies have been destroyed right before the next paddy has grown it&#39;s rice and you go hungry throughout the night.
+
+You soon starve to death due to having no backup rice stored and giving away your rice to your neighbor. 
+
+&#39;&#39;GAME OVER&#39;&#39;
+
+[[Restart-&gt;Start]]</tw-passagedata><tw-passagedata pid="19" name="If taken the Offer" tags="" position="900,1300" size="100,100">The next day, you see Biswas at your house before you leave for work at the tannery. He expects the 7 rupees you&#39;re supposed to pay due to you taking his offer a couple days before.
+
+Because you were robbed the night you saw the tannery doors were open, you only have $rupees rupees for him.
+
+[[Try to explain how you were robbed-&gt;Not Enough Money]]</tw-passagedata><tw-passagedata pid="20" name="Declined Offer and win" tags="" position="1775,1700" size="100,100">Because you never took the offer, you don&#39;t have to worry about paying Biswas his money back. You have enough money to buy food and support your family for the next couple days to come. 
+
+Will you be able to survive for years like this?
+
+&#39;&#39;YOU WIN&#39;&#39;
+
+[[Restart-&gt;Start]]</tw-passagedata><tw-passagedata pid="21" name="Die due to STDS" tags="" position="350,1000" size="100,100">You wake up the next day after your new job and notice you have rashes near your genitalia. You visit the village doctor Kenny has discovers you have STDs. You feel your body get weaker and weaker no matter what medeications you take. 
 
 You eventually die to AIDS weakening your body to the point where your immune system can&#39;t handle a simple cold.
 
 &#39;&#39;GAME OVER&#39;&#39;
 
-[[Restart-&gt;Start]]</tw-passagedata><tw-passagedata pid="22" name="If not enough money" tags="" position="925,1425" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="23" name="Enough money and win" tags="" position="1075,1425" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="24" name="If have education" tags="" position="925,1000" size="100,100">The next day, you&#39;re presented with another job opportunity in which you can become a prostitute. It pays 4 rupees a night on top of the 2 rupees you earn already. You know it&#39;s immoral to have such a job but this can help provide for the family majorly.
+[[Restart-&gt;Start]]</tw-passagedata><tw-passagedata pid="22" name="Not Enough Money" tags="" position="275,1350" size="100,100">You try to reason with Biswas but he doesn&#39;t allow it. He gives you an earful for wasting his money and now you&#39;re indebted to him. He makes you work for him and now any money you earn, you have to pay to him. Because of this, you cannot provide for your family and soon they starve to death one by one.
+
+&#39;&#39;GAME OVER&#39;&#39;
+
+[[Restart-&gt;Start]]</tw-passagedata><tw-passagedata pid="23" name="If have education" tags="" position="925,1000" size="100,100">The next day, you&#39;re presented with another job opportunity in which you can become a prostitute. It pays 4 rupees a night on top of the 2 rupees you earn already. You know it&#39;s immoral to have such a job but this can help provide for the family majorly.
 
 Do you stay with your job at the Tannery?
 
 OR
 
-Get the second job as a prostitute?
+Get a second job as a prostitute?
 
 [[Stay with Tannery-&gt;Stay with Tannery]]
-[[Become Harlot-&gt;Become Prostitute]]</tw-passagedata><tw-passagedata pid="25" name="If bought seeds" tags="" position="1075,1000" size="100,100">The rice you planted when you first bought the seeds as finally grown! You have plenty of seeds and want to show your generosity to 
+[[Become Harlot-&gt;Become Prostitute]]</tw-passagedata><tw-passagedata pid="24" name="If bought seeds" tags="" position="1075,1000" size="100,100">The rice you planted when you first got the seeds has finally grown! You have plenty of seeds left over and want to show your generosity to your neighbors.
+
+You could give them to Old Gran or give them to Biswas as you see that both of them don&#39;t have their own rice to grow.
 
 [[Give to Old Gran-&gt;Give to Old Gran]]
-[[Give to Biswas-&gt;Give to Biswas]]</tw-passagedata><tw-passagedata pid="26" name="If have education, no job" tags="" position="700,1000" size="100,100">Because you&#39;re educated yet have no job, you decide to go look for a job as to not feel like a burden to your family any longer. You try looking for the same job offered to you at the tannery a couple days ago but you the positions already filled.
+[[Give to Biswas-&gt;Give to Biswas]]</tw-passagedata><tw-passagedata pid="25" name="If have education, no job" tags="" position="700,1000" size="100,100">Because you&#39;re educated yet have no job, you decide to go look for a job as to not feel like a burden to your family any longer. You try looking for the same job offered to you at the tannery a couple days ago but you the positions already filled.
 
 Luckily, theres a job opening as a prostitute and it pays 4 rupees a night. You know it&#39;s immoral to have such a job but you need to help provide for your family. You decide to take the job as you have nothing else you can do to provide for your family.
 
